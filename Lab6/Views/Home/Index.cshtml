@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@*TODO: LOGO banner*@
+<h1>Joe's Marine Relocation</h1> @*where do I change bootstrap h1 css??????*@
+
+<h2>Sea Creatures with Tentacles or Stingers?</h2>
+<h2>Joe gets em gone!</h2>
+
+@*table of images here with captions and etc. from viewbag in goodsPicturesController*@
+@*<img src="../../Content/images/ganapathy-kumar-1174645-unsplash.jpg" class="img-rounded" alt="Jellyfish">*@
+@*@Url.Content("~/images/ganapathy-kumar-1174645-unsplash.jpg")*@
+<img src="../../Content/images/ganapathy-kumar-1174645-unsplash.jpg" class="img-fluid" alt="Jellyfish">
+
+@*TODO: how use relative paths to images??? How to make this into tablerow???*@
+@*<div class="col-md-12 text-center">
+        <img src="@Url.Content/images/ganapathy-kumar-1174645-unsplash.jpg" alt="image" class="img-responsive" />
+        <img src="@Url.Content("~/content/images" + Model.ImageUrl)" />
+        <img src="~/content/images/@Model.ImageUrl" />
+    </div>*@
+
+@*@if (Request.IsAuthenticated)
+    {
+
+    }*@

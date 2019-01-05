@@ -1,0 +1,60 @@
+﻿@model Lab6.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GalRanchConsumed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GalRanchConsumed)
+        </dd>
+        <dt>
+            Pets
+        </dt>
+        <dd>
+            @foreach (var pat in Model.MyPets)
+            {
+                @*@Html.ActionLink(pat.NickName, "Details", "Pets", new { id = pat.PetID })*@
+                @Html.ActionLink(pat.NickName, "Details", "Pets",  new { id = pat.PetID}, null)
+                <br>
+            }
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PersonID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

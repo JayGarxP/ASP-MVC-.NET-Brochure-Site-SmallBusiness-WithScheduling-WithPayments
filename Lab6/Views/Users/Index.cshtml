@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Lab6.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+    int counter = 0;
+}
+<h2>Your Users</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GalRanchConsumed)
+        </th>
+        <th> 
+            @Html.DisplayNameFor(model => model.MyWealth.Cash)
+        </th>
+        <th>
+            Num. Pets
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    counter++;
+    <tr class="tRowClass">
+        <td class="tRowsCol @(@item.FirstName.StartsWith("J") ? "danger" : "")">
+            @Html.DisplayFor(modelItem => item.FirstName)
+            
+        </td>
+        <td class="tRowsCol">
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td class="tRowsCol">
+            @Html.DisplayFor(modelItem => item.EmailAddress)
+        </td>
+        <td class="tRowsCol">
+            @Html.DisplayFor(modelItem => item.GalRanchConsumed)
+        </td>
+        <td class="tRowsCol">
+            @Html.DisplayFor(modelItem => item.MyWealth.Cash)
+        </td>
+        <td class="tRowsCol">
+            @Html.DisplayFor(modelItem => item.MyPets.Count)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.PersonID }, htmlAttributes: new { @class = "btn btn-primary btn-sm" }) 
+            @Html.ActionLink("Details", "Details", new { id = item.PersonID }, htmlAttributes: new { @class = "btn btn-primary btn-sm" }) 
+            @Html.ActionLink("Delete", "Delete", new { id = item.PersonID }, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
+        </td>
+    </tr>
+}
+    @if (counter > 7)
+    {
+        <div class="alert alert-info alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Whoa!</strong> That's a lot of users, you should focus on ONE at a time
+        </div>
+    }
+
+</table>
+
+<button type="button" id="hideT" class="btn btn-info">HIDE TABLE</button>
+<button type="button" id="showT" class="btn btn-info">SHOW TABLE</button>
+<div id="rowSelecte">
+
+</div>
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            //$("button").click(function () {
+            //    $("table").toggle();
+            //});
+            $("#hideT").click(function () {
+                $("table").hide();
+                //alert("HIDING TABLE");
+            });
+            $("#showT").click(function () {
+                $("table").show();
+                //alert("SHOWING TABLE");
+            });
+
+            $(".tRowClass").click(function () {
+                //$("table").hide();
+                var value = $(this).find('.tRowsCol').text().trim();
+                //alert("Ya clicked " + value + " row BOI");
+                document.getElementById('rowSelecte').innerHTML = "Ya clicked: " + value;
+            });
+
+        });
+    </script>
+}

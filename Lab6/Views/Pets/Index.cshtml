@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Lab6.Models.Pet>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Pets</h2>
+
+<p>
+    @Html.ActionLink("Buy More!", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NickName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Species)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NickName)
+        </td>
+        <td>
+            @foreach (var uza in item.Users)
+            {
+                @uza.FirstName <text>  </text>
+            }
+        </td>
+        <td>
+            @if (item.Species == 0)
+            {
+                <text>Kindness</text>
+            }
+            else if (item.Species == 1)
+            {
+                <text>Health</text>
+            }
+            else if (item.Species == 2)
+            {
+                <text>Success</text>
+            }
+            else { <text>???</text>}
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PetID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PetID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PetID })
+        </td>
+    </tr>
+}
+
+</table>

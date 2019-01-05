@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+@*<h2>@ViewBag.Title.</h2>*@
+<h1>@ViewBag.Message</h1>
+
+<h3>
+    Create users and pets to gain wealth and fame!
+</h3>
+
+    @if (!Request.IsAuthenticated)
+    {
+        <p>Click @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) to get started!</p>
+    }
+
+
+<p>
+    <br><br><br>
+    By July 2027, the Shenron Corporation had given the entire Milky Way peace and jobs by military force.<br>
+    In July 2030, to reward steady increases of global productivity, Shenron Corporation made the first "recreational software program"
+    <i>Super Battle Pets</i>.
+</p>

@@ -1,0 +1,53 @@
+﻿@model Lab6.Models.Pet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NickName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NickName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Species)
+        </dt>
+        <dd>
+            @if (@Model.Species == 0)
+            {
+                <img src="../../Content/images/kindness.jpg" />
+            }
+            else if (@Model.Species == 1)
+            {
+                <img  src="../../Content/images/health.jpg" />
+            }
+            else if (@Model.Species == 2)
+            {
+                <img  src="../../Content/images/success.jpg" />
+            }
+            else
+            { <text>???</text>}
+        </dd>
+
+        <dt>
+            Merchant Skill
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MerchantSkill)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PetID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
